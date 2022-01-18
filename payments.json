@@ -1,0 +1,19 @@
+{
+    "Manager": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
+    "Scholars": [
+        {
+            "Name": "shaniah",
+            "AccountAddress": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
+            "ScholarPayoutAddress": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
+            "ScholarPercent": 100
+        },
+
+        {
+            "Name": "shaniah",
+            "AccountAddress": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
+            "ScholarPayoutAddress": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
+            "ScholarPercent": 100
+        }
+        
+    ]
+}
