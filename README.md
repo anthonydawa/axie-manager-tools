@@ -11,4 +11,5 @@ manage axie scholarship features
 - store manage scholar datas for scholars holding payouts
 
 
-working version understand the code before running it 
+
+note: this project was done in short notice to accommodate scholarship payouts that takes a lot of time due to many members, codes are not well designed and was made for personal use but works. understand the codes before running.A
