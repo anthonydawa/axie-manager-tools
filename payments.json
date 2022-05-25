@@ -1,19 +1,20 @@
 {
-    "Manager": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
+    "Manager": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
     "Scholars": [
-        {
-            "Name": "shaniah",
-            "AccountAddress": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
-            "ScholarPayoutAddress": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
-            "ScholarPercent": 100
-        },
 
         {
-            "Name": "shaniah",
-            "AccountAddress": "ronin:43b9bb927dc3fe2d165241b8ad38c26bc85ed442",
+            "Name": "joenhel",
+            "AccountAddress": "ronin:0e2a3908008f9692bf067f3e1344ba5aa2f1e2a3",
             "ScholarPayoutAddress": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
-            "ScholarPercent": 100
+            "ScholarPayout": 0,
+            "ManagerPayout": 0
+        },
+        {
+            "Name": "monami",
+            "AccountAddress": "ronin:85f1ea2d4879f93edfcc065a22358e178e7adf14",
+            "ScholarPayoutAddress": "ronin:f99fe48ff09f72023acfee37b878711842af71f9",
+            "ScholarPayout": 0,
+            "ManagerPayout": 0
         }
-        
     ]
 }

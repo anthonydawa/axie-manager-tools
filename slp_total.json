@@ -1,0 +1,322 @@
+[
+    {
+        "name": "fatwicked",
+        "ronin": "ronin:0ac8ea31d29f66d0675dad86e807e684e7a1925d",
+        "ltc_address": "LLivRit4wNhpD6TvjBU9kyaxnMnP2LNhNz",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "curious2dead",
+        "ronin": "ronin:68d06d98f6ed27ed49129b1d881b46a82b6f0d1b",
+        "ltc_address": "09776548717",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "birch",
+        "ronin": "ronin:888ad390a5d42a6edafd03d87943e88373233c58",
+        "ltc_address": "MP2LCxV35PMdXfaQXdoFZd2UfbR4tCvYzv",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "10029"
+    },
+    {
+        "name": "krystelle",
+        "ronin": "ronin:ee378467f9a80f5a47f9c2d1ebc8e4a0ad924f65",
+        "ltc_address": "MDuUWVUwphFJ7g6efGcCeEhEXbExyqE7AY",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "9150"
+    },
+    {
+        "name": "yoanna",
+        "ronin": "ronin:f2cdd3e0908f54698077f5ecc7a050b28d704640",
+        "ltc_address": "MFB7d3tvc49xCB2K7oig2xKzq1T7K5ygZP",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "7167"
+    },
+    {
+        "name": "yozeki",
+        "ronin": "ronin:ebb89df88ad6c87e25a904241336ed627251d3ea",
+        "ltc_address": "none",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "8153"
+    },
+    {
+        "name": "joenhel",
+        "ronin": "ronin:0e2a3908008f9692bf067f3e1344ba5aa2f1e2a3",
+        "ltc_address": "MVG3aCzZdcQsnHq1gMuu7T1sTB1nhj8mkL",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "6533"
+    },
+    {
+        "name": "ren",
+        "ronin": "ronin:6baae9dc02491dda00dfeeb3b6f0e7a0ba1d1133",
+        "ltc_address": "ronin:306d9fa707109e89f2bb2f2c96b70a47c4803cf7",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "masterino",
+        "ronin": "ronin:6df66e7f82bfabe0c5fc4f7ca7d5d59352022877",
+        "ltc_address": "MDuUWVUwphFJ7g6efGcCeEhEXbExyqE7AY",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "8813"
+    },
+    {
+        "name": "erk",
+        "ronin": "ronin:c320053fe77a3d371194ab3b8d1c199b0fe66df4",
+        "ltc_address": "MPdeY1oM4zPd1ZjsSMUbzgVSxzqJLqv1S3",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "7996"
+    },
+    {
+        "name": "nasis",
+        "ronin": "ronin:c10491962f87771137871d97e846513e3ace7e3b",
+        "ltc_address": "LVDgas2xMPSRgP36WP3Vu4v153tU2xAd9S",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "monami",
+        "ronin": "ronin:85f1ea2d4879f93edfcc065a22358e178e7adf14",
+        "ltc_address": "ronin:7584a911c1aaf7eca3299de5e04c034ad5aeb979",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "544"
+    },
+    {
+        "name": "jorj",
+        "ronin": "ronin:91b0fcb5142e82855afe0163cb9e56c910efec74",
+        "ltc_address": "ronin:7584a911c1aaf7eca3299de5e04c034ad5aeb979",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "frances",
+        "ronin": "ronin:d9d70d0cd9d131e285571dd7ba20069f574d3554",
+        "ltc_address": "MFRkes48yQbLxPV7XrHGHwrjXFR23KqGJe",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "alezza",
+        "ronin": "ronin:3f72e65933c8da106bd172295db39e3552157738",
+        "ltc_address": "MQVo17ejt1eaUf3ffAN3XNt7KuTLFfxsqw",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "502"
+    },
+    {
+        "name": "perci",
+        "ronin": "ronin:3ffb2b43bf8b242de86a9302fae15525c5fbb976",
+        "ltc_address": "MFxFejJAeZnqGiAnvhgQMdnFEYgyBKHU37",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "6256"
+    },
+    {
+        "name": "lance",
+        "ronin": "ronin:9d9f423fff219e9e4228acd3ad58238e0223f4c9",
+        "ltc_address": "MSpQCRjJdcDHFHFzfMaaqPAAPCu6jf3LqL",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "jampong",
+        "ronin": "ronin:3cbf9e93ac4c08376de6cd39ac89708856d507eb",
+        "ltc_address": "none",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "3935"
+    },
+    {
+        "name": "dyud",
+        "ronin": "ronin:ba7f8bfeb37887453f4574e0874555a63225aa56",
+        "ltc_address": "ronin:7742b5f434b921204a385c11e8b9c22799e030be",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "0"
+    },
+    {
+        "name": "palma",
+        "ronin": "ronin:46b3dcce9ad190077705250b29d55056c5967d80",
+        "ltc_address": "none",
+        "isManager": "False",
+        "cut": "0.4",
+        "held_amt": "323"
+    },
+    {
+        "name": "main",
+        "ronin": "ronin:171f61fe8ad9fcb44bc8b3ec4baf75124d2710ad",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "863"
+    },
+    {
+        "name": "miho",
+        "ronin": "ronin:aa9556136b640d2944d82ec4ac391502d90e1eda",
+        "ltc_address": "ronin:26988b03d46272fadbb3291d685751cd7478e0f9",
+        "isManager": "False",
+        "cut": "0.6",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram1",
+        "ronin": "ronin:747e09052e27932a3b0af1fde53f0c46487afe23",
+        "ltc_address": "ronin:9abd44acceb9b52373b117d9d5c9cd383f2df9f4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram2",
+        "ronin": "ronin:67d473ecd1854eec4e4cd86b2dba114049c3d69b",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.98",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram3",
+        "ronin": "ronin:3723ee37cb90039377f376315b32a0ef6f5303f4",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "4893"
+    },
+    {
+        "name": "ram4",
+        "ronin": "ronin:b72a203b9a03fbff4a2e4ff40979d15bb2160f2c",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "1989"
+    },
+    {
+        "name": "ram5",
+        "ronin": "ronin:06694865dedb1896acd46a61651204eddb7bd44f",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram6",
+        "ronin": "ronin:d1d1c50157f9ad70391c69bb20ab51a14adcb107",
+        "ltc_address": "ronin:a8e6c167574ff9bfd194cb30e8d30c5838258da2",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "109"
+    },
+    {
+        "name": "ram7",
+        "ronin": "ronin:5215a61724775b62e2fc0bda2804d4367b6837f2",
+        "ltc_address": "ronin:fad23c56a7b9966d6ac96bedd290c8d458e671bb",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram8",
+        "ronin": "ronin:e0b00dad751192707924e6113a3cfd788ee08ec9",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram9",
+        "ronin": "ronin:e7159d7572f591b664a201644b85463b0f636a7e",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram10",
+        "ronin": "ronin:f9a15e5f379267e9f42b99d192beb6862c0767d5",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "174"
+    },
+    {
+        "name": "ram11",
+        "ronin": "ronin:3d6dff8d8727fd3f87610d9736bdfb3dd7ac75fb",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "147"
+    },
+    {
+        "name": "ram12",
+        "ronin": "ronin:4280d252db1c8f461f0eb8380acb338e25e2246c",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "94"
+    },
+    {
+        "name": "ram13",
+        "ronin": "ronin:fb86ba610e7ee34cc7ee121baf8c1388278d46b8",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram14",
+        "ronin": "ronin:76689c84e8d628b85a5bdda4f251d25a6471af13",
+        "ltc_address": "ronin:e3d51cdf6f1fad3cd7c50699be3a17615203627e",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "0"
+    },
+    {
+        "name": "ram15",
+        "ronin": "ronin:256653751b1800bf745f29a220d35e1569d28892",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "97"
+    },
+    {
+        "name": "ram16",
+        "ronin": "ronin:318d2ae70f398d09f74637624ee09b7d6cff23ab",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "289"
+    },
+    {
+        "name": "ram17",
+        "ronin": "ronin:7487a29212bce0312b41781f7eee07f405e6e720",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "407"
+    },
+    {
+        "name": "santy",
+        "ronin": "ronin:4fcbdc13315a92f147175505bb89a3bccfd67a25",
+        "ltc_address": "MX6JQX6reLvWMNdjJh7nBfRmrKUHVkqni4",
+        "isManager": "False",
+        "cut": "0.5",
+        "held_amt": "150"
+    }
+]

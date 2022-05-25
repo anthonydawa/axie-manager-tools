@@ -22,8 +22,6 @@ from utils import (
 )
 
 
-CREATOR_FEE_ADDRESS = ""
-
 now = int(datetime.now().timestamp())
 log_file = f'logs/results_{now}.log'
 logger = logging.getLogger()
@@ -47,7 +45,7 @@ class Payment:
         self.to_acc = to_acc.replace("ronin:", "0x")
         self.amount = amount
         self.summary = summary
-        with open("axie/slp_abi.json", encoding='utf-8') as f:
+        with open("slp_abi.json", encoding='utf-8') as f:
             slb_abi = json.load(f)
         self.contract = self.w3.eth.contract(
             address=Web3.toChecksumAddress(SLP_CONTRACT),
@@ -115,7 +113,7 @@ class Payment:
         ).buildTransaction({
             "chainId": 2020,
             "gas": 246437,
-            "gasPrice": self.w3.toWei("0", "gwei"),
+            "gasPrice": self.w3.toWei("1", "gwei"),
             "nonce": nonce
         })
         # Sign Transaction
@@ -207,27 +205,6 @@ class AxiePaymentsManager:
         if len(self.payments_file["Manager"].replace("ronin:", "0x")) != 42:
             logging.critical(f"Check your manager ronin {self.payments_file['Manager']}, it has an incorrect format")
             validation_success = False
-        # check donations do not exceed 100%
-        # if self.payments_file.get("Donations") and self.type == "amount":
-        #     total = sum([x["Percent"] for x in self.payments_file.get("Donations")])
-        #     if total > 0.99:
-        #         logging.critical("Payments file donations exeeds 100%, please review it")
-        #         validation_success = False
-        #     if any(len(dono['AccountAddress'].replace("ronin:", "0x")) != 42 for dono in self.payments_file["Donations"]):  # noqa
-        #         logging.critical("Please review the ronins in your donations. One or more are wrong!")
-        #         validation_success = False
-        #     self.donations = self.payments_file["Donations"]
-        # if self.payments_file.get("Donations") and self.type == "percent":
-        #     total = sum([x["Percent"] for x in self.payments_file.get("Donations")])
-        #     if total > 99:
-        #         logging.critical("Payments file donations exeeds 100%, please review it")
-        #         validation_success = False
-        #     if any(len(dono['AccountAddress'].replace("ronin:", "0x")) != 42 for dono in self.payments_file["Donations"]): # noqa
-        #         logging.critical("Please review the ronins in your donations. One or more are wrong!")
-        #         validation_success = False
-        #     self.donations = self.payments_file["Donations"]
-
-        # Check we have private keys for all accounts
         for acc in self.payments_file["Scholars"]:
             if acc["AccountAddress"] not in self.secrets_file:
                 logging.critical(f"Account '{acc['Name']}' is not present in secret file, please add it.")
@@ -248,6 +225,7 @@ class AxiePaymentsManager:
 
     def check_acc_has_enough_balance(self, account, balance):
         account_balance = check_balance(account)
+        print(account_balance)
         if account_balance < balance:
             logging.critical(f"Balance in account {account} is "
                              "inssuficient to cover all planned payments!")
@@ -299,35 +277,7 @@ class AxiePaymentsManager:
             manager_payout = acc["ManagerPayout"]
             fee += manager_payout
             total_payments += acc["ManagerPayout"]
-            # if self.donations:
-            #     for dono in self.donations:
-            #         amount = round(manager_payout * dono["Percent"])
-            #         if amount > 1:
-            #             total_dono += amount
-            #             # donation payment
-            #             acc_payments.append(Payment(
-            #                 f"Donation to {dono['Name']} for {acc['Name']}",
-            #                 "donation",
-            #                 acc["AccountAddress"],
-            #                 self.secrets_file[acc["AccountAddress"]],
-            #                 dono["AccountAddress"],
-            #                 amount,
-            #                 self.summary
-            #             ))
-            # Creator fee
-            # fee_payout = round(fee * 0.01)
-            # if fee_payout > 1:
-            #     total_dono += fee_payout
-            #     acc_payments.append(Payment(
-            #                 f"Donation to software creator for {acc['Name']}",
-            #                 "donation",
-            #                 acc["AccountAddress"],
-            #                 self.secrets_file[acc["AccountAddress"]],
-            #                 CREATOR_FEE_ADDRESS,
-            #                 fee_payout,
-            #                 self.summary
-            #             ))
-            # manager payment
+
             acc_payments.append(Payment(
                 f"Payment to manager of {acc['Name']}",
                 "manager",
@@ -384,37 +334,7 @@ class AxiePaymentsManager:
                     ))
                     total_payments += trainer_amount
             manager_payout = acc_balance - total_payments
-            # if self.donations:
-            #     # Extra Donations
-            #     for dono in self.donations:
-            #         dono_amount = round(manager_payout * (dono["Percent"]/100))
-            #         if dono_amount > 1:
-            #             acc_payments.append(Payment(
-            #                     f"Donation to {dono['Name']} for {acc['Name']}",
-            #                     "donation",
-            #                     acc["AccountAddress"],
-            #                     self.secrets_file[acc["AccountAddress"]],
-            #                     dono["AccountAddress"],
-            #                     dono_amount,
-            #                     self.summary
-            #                 ))
-            #             manager_payout -= dono_amount
-            #             total_payments += dono_amount
-            # # Fee Payments
-            # fee_amount = round(acc_balance * 0.01)
-            # if fee_amount > 0:
-            #     acc_payments.append(Payment(
-            #                 f"Donation to software creator for {acc['Name']}",
-            #                 "donation",
-            #                 acc["AccountAddress"],
-            #                 self.secrets_file[acc["AccountAddress"]],
-            #                 CREATOR_FEE_ADDRESS,
-            #                 fee_amount,
-            #                 self.summary
-            #             ))
-            #     manager_payout -= fee_amount
-            #     total_payments += fee_amount
-            # Manager Payment
+
             if manager_payout > 0:
                 acc_payments.append(Payment(
                     f"Payment to manager of {acc['Name']}",
@@ -455,15 +375,14 @@ class PaymentsSummary(Singleton):
         self.manager = {"accounts": [], "slp": 0}
         self.trainer = {"accounts": [], "slp": 0}
         self.scholar = {"accounts": [], "slp": 0}
-        # self.donations = {"accounts": [], "slp": 0}
+
 
     def increase_payout(self, amount, address, payout_type):
         if payout_type == "manager":
             self.increase_manager_payout(amount, address)
         elif payout_type == "scholar":
             self.increase_scholar_payout(amount, address)
-        # elif payout_type == "donation":
-        #     self.increase_donations_payout(amount, address)
+
         elif payout_type == "trainer":
             self.increase_trainer_payout(amount, address)
 
@@ -482,10 +401,6 @@ class PaymentsSummary(Singleton):
         if address not in self.scholar["accounts"]:
             self.scholar["accounts"].append(address)
 
-    # def increase_donations_payout(self, amount, address):
-    #     self.donations["slp"] += amount
-    #     if address not in self.donations["accounts"]:
-    #         self.donations["accounts"].append(address)
 
     def __str__(self):
         msg = "No payments made!"
@@ -498,6 +413,4 @@ class PaymentsSummary(Singleton):
             msg = f'Paid {len(self.scholar["accounts"])} scholars, {self.scholar["slp"]} SLP.\n'
         if self.trainer["slp"] > 0:
             msg += f'Paid {len(self.trainer["accounts"])} trainers, {self.trainer["slp"]} SLP.\n'
-        # if self.donations["slp"] > 0:
-        #     msg += f'Donated to {len(self.donations["accounts"])} organisations, {self.donations["slp"]} SLP.\n'
         return msg

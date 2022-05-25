@@ -2,21 +2,22 @@ import sys
 import asyncio
 import json
 import logging
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 
-from my_helper import generate_pay_json, update_VAXH
+
 from requests.exceptions import RetryError
 from web3 import Web3, exceptions
 import requests
+from my_helper import generate_pay_json, update_VAXH
 
 from utils import (
     check_balance,
     get_nonce,
+    load_json,
     ImportantLogsFilter,
     SLP_CONTRACT,
     RONIN_PROVIDER_FREE,
-    AxieGraphQL,
-    load_json
+    AxieGraphQL
 )
 
 
@@ -31,7 +32,7 @@ logger.addHandler(file_handler)
 
 
 class Claim(AxieGraphQL):
-    def __init__(self, acc_name, force, **kwargs):
+    def __init__(self, acc_name, **kwargs):
         super().__init__(**kwargs)
         self.w3 = Web3(
             Web3.HTTPProvider(
@@ -44,15 +45,7 @@ class Claim(AxieGraphQL):
             abi=slp_abi
         )
         self.acc_name = acc_name
-        self.force = force
         self.request = requests.Session()
-
-    def localize_date(self, date_utc):
-        return date_utc.replace(tzinfo=timezone.utc).astimezone(tz=None)
-
-    def humanize_date(self, date):
-        local_date = self.localize_date(date)
-        return local_date.strftime("%m/%d/%Y, %H:%M")
 
     def has_unclaimed_slp(self):
         url = f"https://game-api.skymavis.com/game-api/clients/{self.account}/items/1"
@@ -63,17 +56,8 @@ class Claim(AxieGraphQL):
                              f"({self.account.replace('0x','ronin:')})")
             return None
         if 200 <= response.status_code <= 299:
-            data = response.json()
-            last_claimed = datetime.utcfromtimestamp(data['last_claimed_item_at'])
-            next_claim_date = last_claimed + timedelta(days=14)
-            utcnow = datetime.utcnow()
-            if utcnow < next_claim_date and not self.force:
-                logging.critical(f"This account will be claimable again on {self.humanize_date(next_claim_date)}.")
-                return None
-            elif self.force:
-                logging.info('Skipping check of dates, --force option was selected')
+            in_game_total = int(response.json()['total'])
             wallet_total = check_balance(self.account)
-            in_game_total = int(data['total'])
             if in_game_total > wallet_total:
                 return in_game_total - wallet_total
         return None
@@ -119,7 +103,7 @@ class Claim(AxieGraphQL):
             signature['amount'],
             signature['timestamp'],
             signature['signature']
-        ).buildTransaction({'gas': 492874, 'gasPrice': 1, 'nonce': nonce})
+        ).buildTransaction({'gas': 492874, 'gasPrice': 0, 'nonce': nonce})
         # Sign claim
         signed_claim = self.w3.eth.account.sign_transaction(
             claim,
@@ -128,11 +112,11 @@ class Claim(AxieGraphQL):
         # Send raw transaction
         self.w3.eth.send_raw_transaction(signed_claim.rawTransaction)
         # Get transaction hash
-        hash_ = self.w3.toHex(self.w3.keccak(signed_claim.rawTransaction))
+        hash = self.w3.toHex(self.w3.keccak(signed_claim.rawTransaction))
         # Wait for transaction to finish
         while True:
             try:
-                recepit = self.w3.eth.get_transaction_receipt(hash_)
+                recepit = self.w3.eth.get_transaction_receipt(hash)
                 if recepit["status"] == 1:
                     success = True
                 else:
@@ -140,7 +124,7 @@ class Claim(AxieGraphQL):
                 break
             except exceptions.TransactionNotFound:
                 logging.debug(f"Waiting for claim for {self.acc_name} ({self.account.replace('0x', 'ronin:')}) to "
-                              f"finish (Nonce:{nonce}) (Hash: {hash_})...")
+                              f"finish (Nonce:{nonce}) (Hash: {hash})...")
                 # Sleep 5 seconds not to constantly send requests!
                 await asyncio.sleep(5)
         if success:
@@ -149,31 +133,26 @@ class Claim(AxieGraphQL):
             logging.info(f"Important: SLP Claimed! New balance for account {self.acc_name} "
                          f"({rf}) is: {blnce}")
             update_VAXH(rf,blnce,'vaxh.csv')
+            # generate_pay_json()
+
         else:
             logging.info(f"Important: Claim for account {self.acc_name} ({self.account.replace('0x', 'ronin:')}) "
                          "failed")
 
 
 class AxieClaimsManager:
-    def __init__(self, payments_file, secrets_file, force=False):
+    def __init__(self, payments_file, secrets_file):
         self.secrets_file, self.acc_names = self.load_secrets_and_acc_name(secrets_file, payments_file)
-        self.force = force
 
-    def load_secrets_and_acc_name(self, secrets, payments):
-        secrets = load_json(secrets)
-        payments = load_json(payments)
+    def load_secrets_and_acc_name(self, secrets_file, payments_file):
+        secrets = load_json(secrets_file)
+        payments = load_json(payments_file)
         refined_secrets = {}
         acc_names = {}
-        if 'Manager' in payments:
-            for scholar in payments['Scholars']:
-                key = scholar['AccountAddress']
-                refined_secrets[key] = secrets[key]
-                acc_names[key] = scholar['Name']
-        else:
-            for scholar in payments['scholars']:
-                key = scholar['ronin']
-                refined_secrets[key] = secrets[key]
-                acc_names[key] = scholar['name']
+        for scholar in payments['Scholars']:
+            key = scholar['AccountAddress']
+            refined_secrets[key] = secrets[key]
+            acc_names[key] = scholar['Name']
         return refined_secrets, acc_names
 
     def verify_inputs(self):
@@ -197,7 +176,6 @@ class AxieClaimsManager:
     def prepare_claims(self):
         claims_list = [
             Claim(
-                force=self.force,
                 account=acc,
                 private_key=self.secrets_file[acc],
                 acc_name=self.acc_names[acc]) for acc in self.secrets_file]
